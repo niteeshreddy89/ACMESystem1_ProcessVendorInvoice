@@ -107,7 +107,7 @@
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_TransactionCount">[int_TransactionCount]</OutArgument>
+                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_TransactionCount">[TransactionCount]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </Sequence>
@@ -295,7 +295,7 @@
                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
                                     <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[str_ProcessName]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String">[ProcessName]</OutArgument>
                                     </ui:AssignOperation.To>
                                     <ui:AssignOperation.Value>
                                       <InArgument x:TypeArguments="x:String">[Config("logF_DispatcherProcessName").ToString]</InArgument>
@@ -303,7 +303,7 @@
                                   </ui:AssignOperation>
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
                                     <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[str_ProcessingDate]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String">[ProcessingDate]</OutArgument>
                                     </ui:AssignOperation.To>
                                     <ui:AssignOperation.Value>
                                       <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString("dd-MMM-yyyy").ToUpper]</InArgument>
@@ -505,7 +505,7 @@
                                               <OutArgument x:TypeArguments="x:String">[str_MailSubject]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[String.Format("Process Completion | {0} | {1}", str_ProcessingDate, str_ProcessName)]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[String.Format("Process Completion | {0} | {1}", ProcessingDate, ProcessName)]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -513,7 +513,7 @@
                                               <OutArgument x:TypeArguments="x:String">[str_MailBody]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"Process '{0}' has been successfully completed on '{1}'."+Environment.NewLine+"A total of {2} new transaction/s were added to the queue for BOT processing.", str_ProcessName, Environment.MachineName, int_TransactionCount)]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"Process '{0}' has been successfully completed on '{1}'."+Environment.NewLine+"A total of {2} new transaction/s were added to the queue for BOT processing.", ProcessName, Environment.MachineName, TransactionCount)]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -565,7 +565,7 @@
                                             <OutArgument x:TypeArguments="x:String">[str_MailSubject]</OutArgument>
                                           </ui:AssignOperation.To>
                                           <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="x:String">[String.Format("Process Termination | {0} | {1}", str_ProcessingDate, str_ProcessName)]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[String.Format("Process Termination | {0} | {1}", ProcessingDate, ProcessName)]</InArgument>
                                           </ui:AssignOperation.Value>
                                         </ui:AssignOperation>
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -573,7 +573,7 @@
                                             <OutArgument x:TypeArguments="x:String">[str_MailBody]</OutArgument>
                                           </ui:AssignOperation.To>
                                           <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"Process '{0}' has been terminated on '{1}' due to the below mentioned exception."+Environment.NewLine+"Exception Type: {2}"+Environment.NewLine+"Exception Source: {3}"+Environment.NewLine+"Exception Detail: {4}",str_ProcessName, Environment.MachineName, SystemException.GetType, SystemException.Source, SystemException.Message)]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"Process '{0}' has been terminated on '{1}' due to the below mentioned exception."+Environment.NewLine+"Exception Type: {2}"+Environment.NewLine+"Exception Source: {3}"+Environment.NewLine+"Exception Detail: {4}",ProcessName, Environment.MachineName, SystemException.GetType, SystemException.Source, SystemException.Message)]</InArgument>
                                           </ui:AssignOperation.Value>
                                         </ui:AssignOperation>
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -612,7 +612,7 @@
                                             <OutArgument x:TypeArguments="x:String">[str_MailSubject]</OutArgument>
                                           </ui:AssignOperation.To>
                                           <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="x:String">[String.Format("Process Exception | {0} | {1}", str_ProcessingDate, str_ProcessName)]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[String.Format("Process Exception | {0} | {1}", ProcessingDate, ProcessName)]</InArgument>
                                           </ui:AssignOperation.Value>
                                         </ui:AssignOperation>
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -620,7 +620,7 @@
                                             <OutArgument x:TypeArguments="x:String">[str_MailBody]</OutArgument>
                                           </ui:AssignOperation.To>
                                           <ui:AssignOperation.Value>
-                                            <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"An exception has occured while executing the process '{0}' on '{1}'. Below are the exception details: "+Environment.NewLine+"Exception Type: {2}"+Environment.NewLine+"Exception Source: {3}"+Environment.NewLine+"Exception Detail: {4}",str_ProcessName, Environment.MachineName, BusinessException.GetType, BusinessException.Source, BusinessException.Message)]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[String.Format("Dear Recipient"+Environment.NewLine+Environment.NewLine+"An exception has occured while executing the process '{0}' on '{1}'. Below are the exception details: "+Environment.NewLine+"Exception Type: {2}"+Environment.NewLine+"Exception Source: {3}"+Environment.NewLine+"Exception Detail: {4}",ProcessName, Environment.MachineName, BusinessException.GetType, BusinessException.Source, BusinessException.Message)]</InArgument>
                                           </ui:AssignOperation.Value>
                                         </ui:AssignOperation>
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -743,9 +743,9 @@
       <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="BusinessException" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="Config" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of attempts of retrying the transaction processing in case of system exceptions." Default="0" Name="RetryNumber" />
-      <Variable x:TypeArguments="x:Int32" Name="int_TransactionCount" />
-      <Variable x:TypeArguments="x:String" Name="str_ProcessName" />
-      <Variable x:TypeArguments="x:String" Name="str_ProcessingDate" />
+      <Variable x:TypeArguments="x:Int32" Name="TransactionCount" />
+      <Variable x:TypeArguments="x:String" Name="ProcessName" />
+      <Variable x:TypeArguments="x:String" Name="ProcessingDate" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
