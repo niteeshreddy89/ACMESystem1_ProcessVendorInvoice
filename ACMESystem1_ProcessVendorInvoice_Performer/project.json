@@ -1,19 +1,18 @@
 {
-  "name": "ACMESystem1_ProcessVendorInvoice_Dispatcher",
-  "description": "Process flow to process vendor invoices - This process retrieves the work items of type WI3 from the ACMESystem1 portal & adds the data to Orchestrator Queue for further processing.",
+  "name": "ACMESystem1_ProcessVendorInvoice_Performer",
+  "description": "Process flow to process vendor invoices - This process transacts the work items of type 'WI3'. Opens the specific work item, performs the pre-defined steps as per the business logic & updates the status for that particular work item in the ACME System 1 portal.",
   "main": "Main.xaml",
   "dependencies": {
-    "System.Security.Cryptography.Algorithms": "[4.3.1]",
-    "UiPath.Excel.Activities": "[2.11.0-preview]",
+    "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.Mail.Activities": "[1.11.2-preview]",
-    "UiPath.System.Activities": "[21.6.1-preview]",
-    "UiPath.UIAutomation.Activities": "[21.6.1-preview]"
+    "UiPath.System.Activities": "[21.4.1]",
+    "UiPath.UIAutomation.Activities": "[21.4.4]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.4.4.0",
-  "projectVersion": "1.0.4",
+  "projectVersion": "1.0.1-alpha.1",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -44,7 +43,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "285d1abf-38ed-4cc1-8f3d-e612ade302ce",
+      "uniqueId": "06366515-f72b-43cd-9d38-d02d71627210",
       "input": [],
       "output": []
     }

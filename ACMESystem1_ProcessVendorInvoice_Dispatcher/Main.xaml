@@ -67,10 +67,9 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID2}" sap2010:Annotation.AnnotationText="Process Name: ACME System 1 - Process Vendor Invoice - Dispatcher&#xA;Author: Niteesh Reddy&#xA;Process Description: Process flow to process vendor invoices - This process terieves the work items of type WI3 from the ACMESystem1 portal &amp; adds the data to Orchestrator Queue for further processing." DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="634,708" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID2}" sap2010:Annotation.AnnotationText="Process Name: ACME System 1 - Process Vendor Invoice - Dispatcher&#xA;Author: Niteesh Reddy&#xA;Process Description: Process flow to process vendor invoices - This process retrieves the work items of type WI3 from the ACMESystem1 portal &amp; adds the data to Orchestrator Queue for further processing." DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="634,708" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -213,7 +212,7 @@
             <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(SystemException IsNot Nothing) AND (RetryNumber &lt; Convert.ToInt32(Config(&quot;MaxRetryNumber&quot;)))" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
           </Transition.Condition>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="991,2161" sap2010:WorkflowViewState.IdRef="State_2">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
               <State.Entry>
                 <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="945,1743" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                   <sap:WorkflowViewStateService.ViewState>
@@ -264,15 +263,9 @@
                             </ui:GetRobotAsset>
                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="444,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
-                                <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">
-                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_ConfigFilePath" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">
-                                  <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;, &quot;Constants&quot;}" />
-                                </InArgument>
-                                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">
-                                  <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                </OutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">[str_ConfigFilePath]</InArgument>
+                                <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings", "Constants"}]</InArgument>
+                                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
                               </ui:InvokeWorkflowFile.Arguments>
                             </ui:InvokeWorkflowFile>
                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Kills all Windows processes representing applications used in this business process to assure that the execution starts in a clean state.&#xA;Since the applications are assumed to be already closed, CloseAllApplications is skipped and just KillAllProcess is invoked." DisplayName="Invoke KillAllProcesses workflow (first run)" sap:VirtualizedContainerService.HintSize="444,214" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
@@ -289,7 +282,7 @@
                             </ui:InvokeWorkflowFile>
                             <ui:AddLogFields sap2010:Annotation.AnnotationText="Add the process name to the logs generated after this point. &#xA;This log field can be used to create reports and visualizations about the process." DisplayName="Add Log Fields (BusinessProcessName)" sap:VirtualizedContainerService.HintSize="444,139" sap2010:WorkflowViewState.IdRef="AddLogFields_2">
                               <ui:AddLogFields.Fields>
-                                <InArgument x:TypeArguments="x:String" x:Key="logF_BusinessProcessName">[Config("logF_BusinessProcessName").ToString]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="logF_BusinessProcessName">[Config("logF_DispatcherProcessName").ToString]</InArgument>
                               </ui:AddLogFields.Fields>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -297,7 +290,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:AddLogFields>
-                            <ui:MultipleAssign DisplayName="Multiple Assign - Process Info" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                            <ui:MultipleAssign DisplayName="Multiple Assign - Process Info" sap:VirtualizedContainerService.HintSize="444,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                               <ui:MultipleAssign.AssignOperations>
                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
@@ -305,7 +298,7 @@
                                       <OutArgument x:TypeArguments="x:String">[str_ProcessName]</OutArgument>
                                     </ui:AssignOperation.To>
                                     <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">[Config("logF_BusinessProcessName").ToString]</InArgument>
+                                      <InArgument x:TypeArguments="x:String">[Config("logF_DispatcherProcessName").ToString]</InArgument>
                                     </ui:AssignOperation.Value>
                                   </ui:AssignOperation>
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
@@ -338,9 +331,7 @@
                       </If>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="755,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
