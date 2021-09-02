@@ -3,6 +3,7 @@
     <x:Property Name="out_TransactionCount" Type="OutArgument(x:Int32)" />
     <x:Property Name="in_AllWorkItems" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_OrchestratorQueueName" Type="InArgument(x:String)" />
+    <x:Property Name="in_WorkItemType" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -105,7 +106,7 @@
               <InArgument x:TypeArguments="x:String">["Type"]</InArgument>
             </ui:FilterOperationArgument.Column>
             <ui:FilterOperationArgument.Operand>
-              <InArgument x:TypeArguments="x:String">["WI3"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_WorkItemType]</InArgument>
             </ui:FilterOperationArgument.Operand>
           </ui:FilterOperationArgument>
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
