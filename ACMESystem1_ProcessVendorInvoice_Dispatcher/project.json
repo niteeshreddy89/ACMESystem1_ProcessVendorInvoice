@@ -1,0 +1,56 @@
+{
+  "name": "ACMESystem1_ProcessVendorInvoice_Dispatcher",
+  "description": "Process flow to process vendor invoices - This process terieves the work items of type WI3 from the ACMESystem1 portal & adds the data to Orchestrator Queue for further processing.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "System.Security.Cryptography.Algorithms": "[4.3.1]",
+    "UiPath.Excel.Activities": "[2.11.0-preview]",
+    "UiPath.Mail.Activities": "[1.11.2-preview]",
+    "UiPath.System.Activities": "[21.6.1-preview]",
+    "UiPath.UIAutomation.Activities": "[21.6.1-preview]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.4.4.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "285d1abf-38ed-4cc1-8f3d-e612ade302ce",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
