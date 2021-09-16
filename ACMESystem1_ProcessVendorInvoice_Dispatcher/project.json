@@ -6,14 +6,14 @@
     "System.Security.Cryptography.Algorithms": "[4.3.1]",
     "UiPath.Excel.Activities": "[2.11.0-preview]",
     "UiPath.Mail.Activities": "[1.11.2-preview]",
-    "UiPath.System.Activities": "[21.6.1-preview]",
-    "UiPath.UIAutomation.Activities": "[21.6.1-preview]"
+    "UiPath.System.Activities": "[21.4.1]",
+    "UiPath.UIAutomation.Activities": "[21.4.4]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.4.4.0",
-  "projectVersion": "1.0.5",
+  "projectVersion": "1.0.6",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
